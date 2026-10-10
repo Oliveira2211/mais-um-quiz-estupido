@@ -1,0 +1,462 @@
+[gd_scene format=3 uid="uid://dpywyu3m02d4k"]
+
+[ext_resource type="Script" uid="uid://t0lhj18s4ia4" path="res://scripts/question_timer.gd" id="1_f73cf"]
+[ext_resource type="Script" uid="uid://djd2k8w5djkdb" path="res://scripts/quiz.gd" id="1_pkjaj"]
+[ext_resource type="Theme" uid="uid://crpl8v0qqf5k0" path="res://themes/quiz_option_button.tres" id="3_20kqc"]
+[ext_resource type="Theme" uid="uid://b3jv2bkyp41y0" path="res://themes/label_normal.tres" id="3_vwwmd"]
+[ext_resource type="Theme" uid="uid://bxsb0i5uki65j" path="res://themes/quiz_action_button.tres" id="4_e2l1h"]
+[ext_resource type="StyleBox" uid="uid://cy3j6xtf8jciu" path="res://styles/quiz_pop_up_painel.tres" id="5_w5ac1"]
+[ext_resource type="Theme" uid="uid://bct18p8j3ti0m" path="res://themes/quiz_pop_up_button.tres" id="6_m81w7"]
+[ext_resource type="Theme" uid="uid://b3ruuqovmpycs" path="res://themes/label_title.tres" id="7_16nxq"]
+[ext_resource type="AudioStream" uid="uid://bj4ifbi8tweqy" path="res://audio/quiz.wav" id="7_xq7j8"]
+[ext_resource type="AudioStream" uid="uid://qg7u7bljle6q" path="res://audio/jump.wav" id="8_lcje5"]
+[ext_resource type="AudioStream" uid="uid://b0h24j1027svw" path="res://audio/correct_answer.wav" id="9_euwqo"]
+[ext_resource type="AudioStream" uid="uid://qk26dvh2lpj2" path="res://audio/incorrect_answer.wav" id="10_vwwmd"]
+[ext_resource type="AudioStream" uid="uid://bqx5xq5occvpi" path="res://audio/suspense.wav" id="11_euwqo"]
+
+[sub_resource type="Gradient" id="Gradient_ry7jf"]
+colors = PackedColorArray(0.07058824, 0.09411765, 0.14117648, 1, 0.11764706, 0.16078432, 0.23137255, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ohyfk"]
+gradient = SubResource("Gradient_ry7jf")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohyfk"]
+bg_color = Color(0.101960786, 0.13725491, 0.19607843, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.2, 0.25490198, 0.33333334, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="Animation" id="Animation_3bubg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Margin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverBg:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverBg:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverDialog:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, 361)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameOverDialog:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_m81w7"]
+resource_name = "game_over"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverBg:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.5882353)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverDialog:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0009999999, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(96, 361), Vector2(96, 45)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverBg:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverDialog:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_w5ac1"]
+resource_name = "jump"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Margin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.39999998),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -25), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m81w7"]
+_data = {
+&"RESET": SubResource("Animation_3bubg"),
+&"game_over": SubResource("Animation_m81w7"),
+&"jump": SubResource("Animation_w5ac1")
+}
+
+[node name="Quiz" type="Control" unique_id=571544784]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pkjaj")
+
+[node name="QuizBg" type="TextureRect" parent="." unique_id=922815588]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ohyfk")
+
+[node name="Timer" type="Timer" parent="." unique_id=389257599]
+unique_name_in_owner = true
+wait_time = 0.1
+script = ExtResource("1_f73cf")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1109061930]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 25
+
+[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=648619346]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="Margin/VBox" unique_id=1605597941]
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="Margin/VBox/HBox" unique_id=2077941817]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_vwwmd")
+
+[node name="QuestionCounter" type="Label" parent="Margin/VBox/HBox" unique_id=1635950448]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_vwwmd")
+horizontal_alignment = 2
+
+[node name="QuestionPanel" type="PanelContainer" parent="Margin/VBox" unique_id=565464893]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ohyfk")
+
+[node name="Margin" type="MarginContainer" parent="Margin/VBox/QuestionPanel" unique_id=461430958]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="QuestionTitle" type="Label" parent="Margin/VBox/QuestionPanel/Margin" unique_id=960862191]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 10)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("3_vwwmd")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Options" type="GridContainer" parent="Margin/VBox" unique_id=1205316066]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="A" type="Button" parent="Margin/VBox/Options" unique_id=124571197]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_20kqc")
+
+[node name="B" type="Button" parent="Margin/VBox/Options" unique_id=533665200]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_20kqc")
+
+[node name="C" type="Button" parent="Margin/VBox/Options" unique_id=303961165]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_20kqc")
+
+[node name="D" type="Button" parent="Margin/VBox/Options" unique_id=1020932957]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_20kqc")
+
+[node name="Margin" type="MarginContainer" parent="Margin/VBox" unique_id=1452689909]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Actions" type="HBoxContainer" parent="Margin/VBox" unique_id=973001442]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Jump" type="Button" parent="Margin/VBox/Actions" unique_id=1647645692]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_e2l1h")
+text = "Pular"
+
+[node name="Help" type="Button" parent="Margin/VBox/Actions" unique_id=2001610998]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_e2l1h")
+text = "Ajuda"
+
+[node name="Stop" type="Button" parent="Margin/VBox/Actions" unique_id=190030383]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_e2l1h")
+text = "Parar
+"
+
+[node name="HelpDialog" type="PanelContainer" parent="." unique_id=246445112]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_w5ac1")
+
+[node name="Margin" type="MarginContainer" parent="HelpDialog" unique_id=1222341735]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="HelpDialog/Margin" unique_id=2103429832]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HelpDialog/Margin/VBox" unique_id=699937573]
+layout_mode = 2
+theme = ExtResource("7_16nxq")
+text = "Ajuda"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HelpDialog/Margin/VBox" unique_id=333010031]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_vwwmd")
+text = "Chute D de Deus"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Close" type="Button" parent="HelpDialog/Margin/VBox" unique_id=892507378]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_m81w7")
+text = "Fechar"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=318048196]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_m81w7")
+
+[node name="GameOverBg" type="ColorRect" parent="." unique_id=1380637276]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="GameOverDialog" type="PanelContainer" parent="." unique_id=25421925]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(448, 270)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = 181.0
+offset_right = 224.0
+offset_bottom = 451.00024
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_w5ac1")
+
+[node name="Margin" type="MarginContainer" parent="GameOverDialog" unique_id=1583859091]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="GameOverDialog/Margin" unique_id=1194715994]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="GameOverDialog/Margin/VBox" unique_id=853304332]
+layout_mode = 2
+theme = ExtResource("7_16nxq")
+theme_override_colors/font_color = Color(0.6, 0.105882354, 0.105882354, 1)
+text = "Derrota"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="GameOverDialog/Margin/VBox" unique_id=2065872409]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_vwwmd")
+text = "rege"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="GameOverDialog/Margin/VBox" unique_id=446230912]
+custom_minimum_size = Vector2(125, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_m81w7")
+text = "Recomeçar"
+
+[node name="Quit" type="Button" parent="GameOverDialog/Margin/VBox" unique_id=1742639130]
+custom_minimum_size = Vector2(125, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_m81w7")
+text = "Sair"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1807749373]
+unique_name_in_owner = true
+stream = ExtResource("7_xq7j8")
+autoplay = true
+
+[node name="Jump" type="AudioStreamPlayer" parent="." unique_id=1106835398]
+unique_name_in_owner = true
+stream = ExtResource("8_lcje5")
+
+[node name="CorrectAnswer" type="AudioStreamPlayer" parent="." unique_id=2071848043]
+unique_name_in_owner = true
+stream = ExtResource("9_euwqo")
+
+[node name="IncorrectAnswer" type="AudioStreamPlayer" parent="." unique_id=745229481]
+unique_name_in_owner = true
+stream = ExtResource("10_vwwmd")
+
+[node name="Suspense" type="AudioStreamPlayer" parent="." unique_id=446525026]
+unique_name_in_owner = true
+stream = ExtResource("11_euwqo")
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
+[connection signal="pressed" from="Margin/VBox/Options/A" to="." method="_on_a_pressed"]
+[connection signal="pressed" from="Margin/VBox/Options/B" to="." method="_on_b_pressed"]
+[connection signal="pressed" from="Margin/VBox/Options/C" to="." method="_on_c_pressed"]
+[connection signal="pressed" from="Margin/VBox/Options/D" to="." method="_on_d_pressed"]
+[connection signal="pressed" from="Margin/VBox/Actions/Jump" to="." method="_on_jump_pressed"]
+[connection signal="pressed" from="Margin/VBox/Actions/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="Margin/VBox/Actions/Stop" to="." method="_on_stop_pressed"]
+[connection signal="pressed" from="HelpDialog/Margin/VBox/Close" to="." method="_on_close_help_dialog_pressed"]
+[connection signal="pressed" from="GameOverDialog/Margin/VBox/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOverDialog/Margin/VBox/Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,12 @@
+[gd_resource type="Theme" format=3 uid="uid://bct18p8j3ti0m"]
+
+[ext_resource type="StyleBox" uid="uid://cx8b0oecsqqnk" path="res://styles/quiz_pop_up_hover.tres" id="1_67g7t"]
+[ext_resource type="FontFile" uid="uid://dt5g00xcnl31p" path="res://fonts/LTSuperior-Medium.ttf" id="1_f7av8"]
+[ext_resource type="StyleBox" uid="uid://bwoddivmt1dj0" path="res://styles/quiz_pop_up_button.tres" id="2_f7av8"]
+
+[resource]
+Button/colors/font_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+Button/fonts/font = ExtResource("1_f7av8")
+Button/styles/hover = ExtResource("1_67g7t")
+Button/styles/normal = ExtResource("2_f7av8")
+Button/styles/pressed = ExtResource("1_67g7t")

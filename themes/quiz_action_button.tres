@@ -1,0 +1,11 @@
+[gd_resource type="Theme" format=3 uid="uid://bxsb0i5uki65j"]
+
+[ext_resource type="StyleBox" uid="uid://cdichyu8lylqp" path="res://styles/quiz_action_button_hover.tres" id="2_5moy2"]
+[ext_resource type="StyleBox" uid="uid://bjg3kef3rbhll" path="res://styles/quiz_action_button.tres" id="2_sn62r"]
+
+[resource]
+Button/colors/font_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+Button/styles/disabled = ExtResource("2_sn62r")
+Button/styles/hover = ExtResource("2_5moy2")
+Button/styles/normal = ExtResource("2_sn62r")
+Button/styles/pressed = ExtResource("2_5moy2")

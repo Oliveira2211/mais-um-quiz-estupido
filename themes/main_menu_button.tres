@@ -1,0 +1,11 @@
+[gd_resource type="Theme" format=3 uid="uid://de7t2np673eup"]
+
+[ext_resource type="FontFile" uid="uid://dt5g00xcnl31p" path="res://fonts/LTSuperior-Medium.ttf" id="1_eraur"]
+[ext_resource type="StyleBox" uid="uid://lfpv7il05den" path="res://styles/main_menu_button_hover.tres" id="1_rvg52"]
+[ext_resource type="StyleBox" uid="uid://dgsqy81lg8dei" path="res://styles/main_menu_button.tres" id="2_eraur"]
+
+[resource]
+Button/fonts/font = ExtResource("1_eraur")
+Button/styles/hover = ExtResource("1_rvg52")
+Button/styles/normal = ExtResource("2_eraur")
+Button/styles/pressed = ExtResource("1_rvg52")

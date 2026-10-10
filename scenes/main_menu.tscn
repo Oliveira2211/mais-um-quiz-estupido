@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://bh0os4y16jncs"]
+
+[ext_resource type="Script" uid="uid://oaiuk5qpa6ao" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="FontFile" uid="uid://dt5g00xcnl31p" path="res://fonts/LTSuperior-Medium.ttf" id="2_8ln24"]
+[ext_resource type="Theme" uid="uid://c4nmsrs3wwotq" path="res://themes/main_menu_primary_button.tres" id="2_ekxnf"]
+[ext_resource type="Theme" uid="uid://de7t2np673eup" path="res://themes/main_menu_button.tres" id="3_bqqt6"]
+[ext_resource type="AudioStream" uid="uid://bduktwlduyncl" path="res://audio/menu.wav" id="4_wu84c"]
+[ext_resource type="Theme" uid="uid://b3ruuqovmpycs" path="res://themes/label_title.tres" id="5_rtw2f"]
+[ext_resource type="Theme" uid="uid://c71u1g72c2oqq" path="res://themes/rich_text_label_normal.tres" id="6_oa1go"]
+
+[sub_resource type="Gradient" id="Gradient_bqqt6"]
+colors = PackedColorArray(0.11764706, 0.16078432, 0.23137255, 1, 0.050980393, 0.050980393, 0.050980393, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ln24"]
+gradient = SubResource("Gradient_bqqt6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Theme" id="Theme_rtw2f"]
+Label/colors/font_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("2_8ln24")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wl4tm"]
+bg_color = Color(0.05882353, 0.09019608, 0.16470589, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.21960784, 0.28627452, 0.38039216, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="MainMenu" type="Control" unique_id=414296051]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="Bg" type="TextureRect" parent="." unique_id=2102986756]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_8ln24")
+expand_mode = 1
+
+[node name="Selection" type="Control" parent="." unique_id=1176848179]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Selection" unique_id=1659033208]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -115.0
+offset_right = 155.5
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_rtw2f")
+text = "Mais um quiz estúpido"
+
+[node name="Options" type="VBoxContainer" parent="Selection" unique_id=1703054063]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -50.5
+offset_right = 38.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="Selection/Options" unique_id=706127396]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+theme = ExtResource("2_ekxnf")
+text = "Começar"
+
+[node name="About" type="Button" parent="Selection/Options" unique_id=1885482215]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+theme = ExtResource("3_bqqt6")
+text = "Sobre"
+
+[node name="Credits" type="Button" parent="Selection/Options" unique_id=1428055013]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+theme = ExtResource("3_bqqt6")
+text = "Créditos"
+
+[node name="Display" type="Control" parent="." unique_id=445468702]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Display" unique_id=1066538533]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 50
+
+[node name="VBox" type="VBoxContainer" parent="Display/Margin" unique_id=1556099957]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Panel" type="PanelContainer" parent="Display/Margin/VBox" unique_id=592633503]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wl4tm")
+
+[node name="Margin" type="MarginContainer" parent="Display/Margin/VBox/Panel" unique_id=1381786083]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Display/Margin/VBox/Panel/Margin" unique_id=1249593538]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Display/Margin/VBox/Panel/Margin/VBox" unique_id=347660133]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("5_rtw2f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="Display/Margin/VBox/Panel/Margin/VBox" unique_id=115051537]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("6_oa1go")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="Display/Margin/VBox" unique_id=1931788195]
+custom_minimum_size = Vector2(100, 30)
+custom_maximum_size = Vector2(70, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_bqqt6")
+text = "Voltar"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=704604304]
+stream = ExtResource("4_wu84c")
+autoplay = true
+
+[connection signal="pressed" from="Selection/Options/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Selection/Options/About" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="Selection/Options/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Display/Margin/VBox/Back" to="." method="_on_back_pressed"]

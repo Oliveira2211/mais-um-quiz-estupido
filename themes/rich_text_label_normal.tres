@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://c71u1g72c2oqq"]
+
+[ext_resource type="FontFile" uid="uid://dt5g00xcnl31p" path="res://fonts/LTSuperior-Medium.ttf" id="1_0stnt"]
+
+[resource]
+RichTextLabel/colors/default_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+RichTextLabel/fonts/normal_font = ExtResource("1_0stnt")
